@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'routing';
+
+  constructor(private route :Router){}
+
+  arr = [{id:1},{id:2},{id:3}]
+
+  one(item:any){
+      this.route.navigate(['/param',item.id])
+  }
 }
