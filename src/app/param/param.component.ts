@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute,Router} from '@angular/router';
 import { ParamMap } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { ParamMap } from '@angular/router';
 export class ParamComponent implements OnInit {
   
   public ids:any;
-  constructor(private route:ActivatedRoute) { }
+  constructor(private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param :ParamMap) =>{
@@ -18,6 +18,10 @@ export class ParamComponent implements OnInit {
       this.ids = id;
     })
     // let id = parseInt(this.route.snapshot.paramMap.get('id')|| '');
+  }
+
+  one(){
+    this.router.navigate(['/param/' + this.ids + '/one'])
   }
 
 }
